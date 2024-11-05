@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uncharted 4 The Lost Legacy</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div id="parallax">
+        <div class="layer background" data-speed="0.1"></div>
+        <div class="layer nathan" data-speed="0.25"></div>
+        <div class="layer drake" data-speed="-0.25"></div>
+        <div class="layer bottom" data-speed="0"></div>
+    </div>
+    <section>
+        <img src="img/text.png" alt="Logo">
+        <p>Uncharted é uma série de videojogos de ação-aventura produzida pela Naughty Dog e publicada pela Sony Computer Entertainment para as plataformas PlayStation. A série segue as aventuras de Nathan "Nate" Drake, um caçador de tesouros e o protagonista do Jogo, o seu mentor e amigo Victor "Sully" Sullivan, e da jornalista Elena Fisher, e de vários outros companheiros secundários que Drake conhece enquanto viaja ao redor do mundo para descobrir mistérios históricos. A série principal tem atualmente os jogos Uncharted: Drake's Fortune, Uncharted 2: Among Thieves, Uncharted 3: Drake's Deception e Uncharted 4: A Thief's End. Para a PlayStation Vita existe ainda o jogo Uncharted: Golden Abyss, que serve como prequela para os anteriores, Uncharted: Fight for Fortune um jogo baseado em cartas, Uncharted: Fortune Hunter um videojogo de quebra-cabeça e uma DLC stand alone de Uncharted 4 pra série, Uncharted: The Lost Legacy, dessa vez com Chloe Frazer como personagem principal, e sua amiga Nadine Ross.</p>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        const tl = gsap.timeline({
+            scrollTrigger:{
+                trigger:"#parallax",
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+            }
+        })
+
+        gsap.utils.toArray(".layer").forEach(layer =>{
+            const speed = layer.dataset.speed;
+            const movement = -(layer.offsetHeight * speed);
+            tl.to(layer,{y: movement,ease:"none"},0)
+        })
+
+    </script>
+</body>
+
+</html>
